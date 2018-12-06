@@ -20,7 +20,7 @@ import java.util.Collection;
 public class User  implements UserDetails {
 
     public static enum Role{ USER }
-
+/*add is*/
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id ;
@@ -64,17 +64,12 @@ public class User  implements UserDetails {
         return true;
     }
 
+
     public void setUsername(String username) {
         this.username = username;
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(role));
-        return authorities;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -98,6 +93,14 @@ public class User  implements UserDetails {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        return authorities;
+    }
+
 
     public User() {
     }
