@@ -5,6 +5,8 @@ import com.biat.springbootangular4authentication.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -18,7 +20,7 @@ public class UserService {
         return userRepository.findByUsername(userName);
     }
     public User find(Long id) {
-       return userRepository.findOne(id);
+        return userRepository.findById(id).orElse(null);
     }
     public User update(User user) {
         return userRepository.save(user);
